@@ -1,0 +1,43 @@
+[
+  {
+    "id":"1",
+    "name": "A Day at the Beach",
+    "slug": "day-at-the-beach",
+    "ingredients": [
+      {"amount":"0_5_cup","id":"9"},
+      {"amount":"2_cup","id":"14"},
+      {"amount":"1_cup","id":"8"},
+      {"amount":"2_cup","id":"6"}
+    ],
+    "hero": "pineapple_smoothie.jpg",
+    "tags": ["tropical","fruity","low fat","sweet","hawaiian"]
+  },
+  {
+    "id":"2",
+    "name": "Chunky Monkey",
+    "slug": "chunky-monkey",
+    "ingredients": [
+      {"amount":"2_tbsp","id":"21"},
+      {"amount":"1_tbsp","id":"18"},
+      {"amount":"2_cup","id":"13"},
+      {"amount":"1_tbsp","id":"16"},
+      {"amount":"2_cup","id":"6"}
+    ],
+    "hero": "choco_smoothie.jpg",
+    "tags": ["chocolicious","nutty"]
+  },
+  {
+    "id":"3",
+    "name": "Green Dream",
+    "slug": "green-dream",
+    "ingredients": [
+      {"amount":"2_cup","id":"1"},
+      {"amount":"1_cup","id":"3"},
+      {"amount":"1_cup","id":"10"},
+      {"amount":"1_cup","id":"11"},
+      {"amount":"0_5_tsp","id":"20"}
+    ],
+    "hero": "green_smoothie.jpg",
+    "tags": ["low fat","healthy"]
+  }
+]

@@ -1,0 +1,177 @@
+[
+  {
+    "id":"1",
+    "name":"Kale",
+    "image":"kale.jpg",
+    "category":"vitamins",
+    "default_amt":"1_cup"
+  },
+  {
+    "id":"2",
+    "name":"Collard Greens",
+    "image":"collard_greens.jpg",
+    "category":"vitamins",
+    "default_amt":"1_cup"
+  },
+  {
+    "id":"3",
+    "name":"Dandelion Greens",
+    "image":"dandelion_greens.jpg",
+    "category":"vitamins",
+    "default_amt":"1_cup"
+  },
+  {
+    "id":"4",
+    "name":"Spinach",
+    "image":"spinach.jpg",
+    "category":"vitamins",
+    "default_amt":"1_cup"
+  },
+  {
+    "id":"5",
+    "name":"Swiss Chard",
+    "image":"swiss_chard.jpg",
+    "category":"vitamins",
+    "default_amt":"1_cup"
+  },
+  {
+    "id":"6",
+    "name":"Banana",
+    "image":"banana.jpg",
+    "category":"sweetness",
+    "default_amt":"2_cup"
+  },
+  {
+    "id":"7",
+    "name":"Blueberries",
+    "image":"blueberry.jpg",
+    "category":"sweetness",
+    "default_amt":"1_cup"
+  },
+  {
+    "id":"8",
+    "name":"Mango",
+    "image":"mango.jpg",
+    "category":"sweetness",
+    "default_amt":"1_cup"
+  },
+  {
+    "id":"9",
+    "name":"Pineapple",
+    "image":"pineapple.jpg",
+    "category":"sweetness",
+    "default_amt":"1_cup"
+  },
+  {
+    "id":"10",
+    "name":"Strawberries",
+    "image":"strawberry.jpg",
+    "category":"sweetness",
+    "default_amt":"1_cup"
+  },
+  {
+    "id":"11",
+    "name":"Almond Milk",
+    "image":"almond_milk.jpg",
+    "category":"liquid",
+    "default_amt":"2_cup"
+  },
+  {
+    "id":"12",
+    "name":"Beetroot Juice",
+    "image":"beetroot_juice.jpg",
+    "category":"liquid",
+    "default_amt":"1_cup"
+  },
+  {
+    "id":"13",
+    "name":"Coconut Milk",
+    "image":"coconut_milk.jpg",
+    "category":"liquid",
+    "default_amt":"2_cup"
+  },
+  {
+    "id":"14",
+    "name":"Coconut Water",
+    "image":"coconut_water.jpg",
+    "category":"liquid",
+    "default_amt":"2_cup"
+  },
+  {
+    "id":"15",
+    "name":"Orange Juice",
+    "image":"orange_juice.jpg",
+    "category":"liquid",
+    "default_amt":"2_cup"
+  },
+  {
+    "id":"16",
+    "name":"Chia Seeds",
+    "image":"chia_seeds.jpg",
+    "category":"protein",
+    "default_amt":"1_tsp"
+  },
+  {
+    "id":"17",
+    "name":"Cinnamon",
+    "image":"cinnamon.jpg",
+    "category":"flavor",
+    "default_amt":"0_5_tsp"
+  },
+  {
+    "id":"18",
+    "name":"Cocoa Powder",
+    "image":"cocoa_powder.jpg",
+    "category":"flavor",
+    "default_amt":"2_tbsp"
+  },
+  {
+    "id":"19",
+    "name":"Flax Seed",
+    "image":"flax_seeds.jpg",
+    "category":"protein",
+    "default_amt":"1_tsp"
+  },
+  {
+    "id":"20",
+    "name":"Ginger",
+    "image":"ginger.jpg",
+    "category":"flavor",
+    "default_amt":"0_5_tsp"
+  },
+  {
+    "id":"21",
+    "name":"Nut Butter",
+    "image":"nut_butter.jpg",
+    "category":"protein",
+    "default_amt":"2_tbsp"
+  },
+  {
+    "id":"22",
+    "name":"Protein Powder",
+    "image":"protein_powder.jpg",
+    "category":"protein",
+    "default_amt":"2_tbsp"
+  },
+  {
+    "id":"23",
+    "name":"Vanilla Extra",
+    "image":"vanilla_extract.jpg",
+    "category":"flavor",
+    "default_amt":"0_5_tsp"
+  },
+  {
+    "id":"24",
+    "name":"Shredded Coconut",
+    "image":"coconut_shredded.jpg",
+    "category":"flavor",
+    "default_amt":"1_tbsp"
+  },
+  {
+    "id":"25",
+    "name":"Hemp Seed",
+    "image":"hemp_seed.jpg",
+    "category":"protein",
+    "default_amt":"1_tsp"
+  }
+]
