@@ -1,26 +1,28 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import {Provider} from 'react-redux';
-import {Container, Typography} from '@material-ui/core';
-import grey from '@material-ui/core/colors/grey';
+import {Container} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-
+/*--Redux--*/
 import store from './store/store';
-
 /*--Components--*/
 import Home from './components/Home';
 import Create from './components/Create';
 import Edit from './components/Edit';
 import Details from './components/Details';
 import HeaderBar from './components/HeaderBar';
+import Footer from './components/footer'
+/*--IndexedDb--*/
+import { DBConfig } from './config/DBConfig';
+import { initDB } from 'react-indexed-db';
+
+initDB(DBConfig);
 
 function App() {
   //material-ui jss
   const useStyles = makeStyles((theme) => ({
     base: {
-      marginTop: theme.spacing(2)
-    },
-    title: {
-      color: grey[500]
+      marginTop: theme.spacing(2),
+      overflow: 'scroll'
     }
   }));
   const classes = useStyles();
@@ -45,14 +47,7 @@ function App() {
             }
             />
           </Container>
-          <footer style={{padding: `2rem`}}>
-            <Typography
-              className={classes.title}
-              variant="h6"
-            >
-              © {new Date().getFullYear()}, Built with all natural ingredients.
-            </Typography>
-          </footer>
+          <Footer />
         </div>
       </Router>
     </Provider>

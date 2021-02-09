@@ -7,13 +7,15 @@ import grey from '@material-ui/core/colors/grey';
 import { makeStyles } from "@material-ui/core/styles";
 //= ==== Store ===== //
 import { selectIngredients } from '../features/ingredientsSlice';
-import { selectRecipeBySlug, saveRecipe } from '../features/recipesSlice';
+import { selectRecipes, selectRecipeBySlug, saveRecipe } from '../features/recipesSlice';
 //= ==== Constants ===== //
 import UrlPaths from '../constants/UrlPathConstants';
 import IngredientCategories from '../constants/IngredientCategories';
 //= ==== Components ===== //
 import PantryItem from './PantryItem';
 import PantryItemSelected from './PantryItemSelected';
+//= ==== Custom Hooks ===== //
+import usePrevious from '../hooks/usePrevious';
 //= ==== Utils ===== //
 import {strToSlug, strToInputName} from '../utils/strUtils';
 //material-ui jss
@@ -43,15 +45,15 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const EditPage = () => {
-  console.log("!!EditPage")
   const { recipe_slug } = useParams();
   const dispatch        = useDispatch();
   const history         = useHistory();
+  const appRecipes      = useSelector(selectRecipes);
   const ingredients     = useSelector(selectIngredients);
   const recipe          = useSelector(
     (state) =>  selectRecipeBySlug(state, { slug: recipe_slug })//pass along props for reselector
   );
-
+  const prevRecipe = usePrevious(recipe);
   const [checkboxState, setCheckboxState] = useState({});
   const [recipeItems, setRecipeItems] = useState([]);
   const [amtSelectState, setAmtSelectState] = useState({});
@@ -59,7 +61,21 @@ const EditPage = () => {
   //where possible avoid rerenders.
   const formValid = useMemo(() => !!recipeName && recipeItems.length, [recipeName, recipeItems]);
 
-  const classes         = useStyles();
+  const classes = useStyles();
+
+  //persist when recipes change
+  useEffect(() => {
+    if(appRecipes) {
+      localStorage.setItem('recipes', JSON.stringify(appRecipes));
+    }
+  },[appRecipes]);
+
+  //redirect when recipe edit completed
+  useEffect(() => {
+    if(recipe && prevRecipe && recipe !== prevRecipe) {
+      history.push({pathname: `${UrlPaths.DETAILS_PATH}${strToSlug(recipeName)}`})
+    }
+  },[prevRecipe, recipe]);
 
   // when page first loads sync local state with the recipe being edited
   const setRecipeInitialState = useCallback((recipe) => {
@@ -118,7 +134,6 @@ const EditPage = () => {
   //save a recipe to the store
   const handleSaveClick = () => {
     dispatch(saveRecipe( createRecipePayload() ));
-    history.push({pathname: `${UrlPaths.DETAILS_PATH}${recipe_slug}`})
   };
 
   const createRecipePayload = () => {

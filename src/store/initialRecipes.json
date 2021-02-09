@@ -2,7 +2,7 @@
   {
     "id":"1",
     "name": "A Day at the Beach",
-    "slug": "day-at-the-beach",
+    "slug": "a-day-at-the-beach",
     "ingredients": [
       {"amount":"0_5_cup","id":"9"},
       {"amount":"2_cup","id":"14"},

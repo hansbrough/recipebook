@@ -1,11 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { createSelector } from 'reselect';
+import defaultRecipesState from '../store/initialRecipes';
 
-import initialRecipesState from '../store/initialRecipes';
+const cachedRecipes = JSON.parse(localStorage.getItem('recipes'));
+const initialState = cachedRecipes || defaultRecipesState;
 
 export const recipesSlice = createSlice({
   name: 'recipes',
-  initialState: initialRecipesState,
+  initialState: initialState,
   reducers: {
     upsert: (state, action) => {
       if(action.payload) {
@@ -44,6 +46,15 @@ const getRecipeSlug = (state, props) => props && props.slug;
 export const selectRecipesLength = createSelector(
   [selectRecipes],
   recipes => recipes.length
+);
+
+export const selectMostRecentRecipe = createSelector(
+  [selectRecipes],
+  recipes => {
+    if (recipes.length){
+      return recipes.reduce((prev, current) => (+prev.id > +current.id) ? prev : current)
+    }
+  }
 );
 
 export const selectRecipeById = createSelector(

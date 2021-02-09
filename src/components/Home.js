@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 //= ==== MaterialUI ===== //
@@ -40,17 +40,20 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const HomePage = () => {
-  const history   = useHistory();
-  const dispatch  = useDispatch();
-  const recipes   = useSelector(selectRecipes);
-  const classes   = useStyles();
+  const history     = useHistory();
+  const dispatch    = useDispatch();
+  const appRecipes  = useSelector(selectRecipes);
+  const classes     = useStyles();
+
+  // handles 'delete' usecase
+  useEffect(() => {
+    if(appRecipes) {
+      localStorage.setItem('recipes', JSON.stringify(appRecipes));
+    }
+  }, [appRecipes]);
 
   const handleDelete = id => dispatch(removeRecipe({id}));
-
-  const handleEdit = (slug) => {
-    console.log("handleEdit:",slug)
-    history.push({pathname: `${UrlPaths.EDIT_PATH}${slug}`})
-  };
+  const handleEdit = slug => history.push({pathname: `${UrlPaths.EDIT_PATH}${slug}`});
 
   return (
     <>
@@ -60,7 +63,7 @@ const HomePage = () => {
       </Typography>
 
       <div className="recipes-list-container">
-      {recipes.map( recipe =>
+      {appRecipes.map( recipe =>
         (
           <div className="recipe-summary" key={recipe.id}>
             <Link className="recipe-link-title" to={`${UrlPaths.DETAILS_PATH}${recipe.slug}`}>

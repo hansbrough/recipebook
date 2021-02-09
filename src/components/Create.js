@@ -7,7 +7,7 @@ import grey from '@material-ui/core/colors/grey';
 import { makeStyles } from "@material-ui/core/styles";
 //= ==== Store ===== //
 import { selectIngredients } from '../features/ingredientsSlice';
-import { selectRecipesLength, saveRecipe } from '../features/recipesSlice';
+import { selectRecipes, selectRecipesLength, selectMostRecentRecipe, saveRecipe } from '../features/recipesSlice';
 //= ==== Constants ===== //
 import UrlPaths from '../constants/UrlPathConstants';
 import IngredientCategories from '../constants/IngredientCategories';
@@ -49,23 +49,32 @@ const CreatePage = () => {
   const [recipeItems, setRecipeItems] = useState([]);
   const [amtSelectState, setAmtSelectState] = useState({});
   const [recipeName, setRecipeName] = useState();
+
   //where possible avoid rerenders.
   const formValid = useMemo(() => !!recipeName && recipeItems.length, [recipeName, recipeItems]);
 
   const dispatch        = useDispatch();
   const history         = useHistory();
+  const appRecipes      = useSelector(selectRecipes);
   const ingredients     = useSelector(selectIngredients);
   const recipeCnt       = useSelector(selectRecipesLength);
+  const latestRecipe    = useSelector(selectMostRecentRecipe);
   const prevIsRecipeCnt = usePrevious(recipeCnt);
   const classes         = useStyles();
 
   //redirect after recipe created
   useEffect(() => {
     if(prevIsRecipeCnt < recipeCnt) {
-      const slug = strToSlug(recipeName);
-      history.push({pathname: `${UrlPaths.DETAILS_PATH}${slug}`})
+      history.push({pathname: `${UrlPaths.DETAILS_PATH}${strToSlug(recipeName)}`})
     }
   },[prevIsRecipeCnt, recipeCnt, history, recipeName]);
+
+  //persist when recipes change
+  useEffect(() => {
+    if(appRecipes) {
+      localStorage.setItem('recipes', JSON.stringify(appRecipes));
+    }
+  },[appRecipes]);
 
   //update local state based on checkbox selection
   const handleCheckboxChange = (evt) => {
@@ -98,8 +107,10 @@ const CreatePage = () => {
   const handleSaveClick = () => dispatch(saveRecipe( createRecipePayload() ));
 
   const createRecipePayload = () => {
+    let latestId = latestRecipe ? parseInt(latestRecipe.id, 10) : 0;
+    const id = (latestId+1).toString();
     const payload = {
-      id: recipeCnt+1,
+      id,
       name: recipeName,
       slug: strToSlug(recipeName),
       ingredients: recipeItems.map(item => {
