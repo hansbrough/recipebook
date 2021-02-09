@@ -3,7 +3,6 @@ import {useSelector} from 'react-redux';
 import { useParams } from "react-router-dom";
 import {Chip, Typography} from '@material-ui/core';
 import pink from '@material-ui/core/colors/pink';
-//import Image from 'material-ui-image';
 import { makeStyles } from "@material-ui/core/styles";
 //= ==== Components ===== //
 import Ingredients from './IngredientsFull';
@@ -42,7 +41,7 @@ const DetailsPage = () => {
   );
   const {name:recipeName, hero, tags} = recipe || {};
   const classes = useStyles();
-  
+
   const handleDelete = () => {
     console.log("handleDelete")
   }

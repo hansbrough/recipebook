@@ -11,11 +11,6 @@ import Edit from './components/Edit';
 import Details from './components/Details';
 import HeaderBar from './components/HeaderBar';
 import Footer from './components/footer'
-/*--IndexedDb--*/
-import { DBConfig } from './config/DBConfig';
-import { initDB } from 'react-indexed-db';
-
-initDB(DBConfig);
 
 function App() {
   //material-ui jss

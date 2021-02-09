@@ -1,9 +1,9 @@
 # SmoothieBook
 
-Built with react functional components, hooks and the @reduxjs/toolkit package (which removes a lot the usual redux boilerplate code.)
+Built with react functional components, hooks and the @reduxjs/toolkit package (which removes a lot of the usual redux boilerplate code.)
 
 To view a build version:
-http://...
+http://impartial-lawyer.surge.sh/
 
 To run locally:
 1. Clone the repo
